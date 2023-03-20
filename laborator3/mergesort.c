@@ -1,5 +1,5 @@
 #include <stdio.h>
-// cox
+
 void merge(int array[], int left, int middle, int right)
 {
     int n1 = middle - left + 1;
@@ -49,11 +49,8 @@ void mergesort(int array[], int left, int right)
     if (left < right)
     {
         middle = (left + right) / 2;
-        printf("l %d %d\n", left, middle);
         mergesort(array, left, middle);
-        printf("r %d %d\n", middle + 1, right);
         mergesort(array, middle + 1, right);
-        printf("merge\n");
         merge(array, left, middle, right);
     }
 }
