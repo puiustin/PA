@@ -50,65 +50,60 @@
 //     *b = aux;
 // }
 
-// #include <stdio.h>
-// #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-// void swap(int *a, int *b)
-// {
-//     int aux = *a;
-//     *a = *b;
-//     *b = aux;
-// }
+void swap(int *a, int *b)
+{
+    int aux = *a;
+    *a = *b;
+    *b = aux;
+}
 
-// int partition(int array[], int left, int right)
-// {
-//     int pivot = array[right];
-//     int i = left - 1;
-//     for (int j = left; j < right; j++)
-//     {
-//         if (array[j] <= pivot)
-//         {
-//             i++;
-//             swap(&array[i], &array[j]);
-//         }
-//     }
-//     swap(&array[i + 1], &array[right]);
-//     return i + 1;
-// }
+int partition(int array[], int low, int high)
+{
+    int pivot = array[high];
+    int i = low - i;
+    for (int j = low; j < high; j++)
+    {
+        if (array[j] <= pivot)
+            swap(&array[i], &array[j]);
+    }
 
-// void qsort(int array[], int left, int right)
-// {
-//     int pivot;
+    swap(&array[i + 1], &array[high]);
+    return i + 1;
+}
 
-//     if (left < right)
-//     {
-//         pivot = partition(array, left, right);
-//         qsort(array, left, pivot - 1);
-//         qsort(array, pivot + 1, right);
-//     }
-// }
+void quicksort(int array[], int low, int high)
+{
+    int pivot;
+    if (low < high)
+    {
+        pivot = partition(array, low, high);
+        quicksort(array, low, pivot - 1);
+        quicksort(array, pivot + 1, high);
+    }
+}
 
-// void citire(int array[], int n)
-// {
-//     for (int i = 0; i < n; i++)
-//     {
-//         printf("Introduceti elementul %d: \n", i);
-//         scanf("%d", &array[i]);
-//     }
-// }
-// int main(void)
-// {
-//     int n;
-//     int *v;
-//     printf("Introduceti numarul de elemente ale vectorului: \n");
-//     scanf("%d", &n);
-//     v = malloc(n * sizeof(int));
-//     citire(v, n);
-//     qsort(v, 0, n - 1);
-//     for (int i = 0; i < n; i++)
-//     {
-//         printf("Vectorul sortat este: ");
-//         printf("%d ", v[i]);
-//     }
-//     return 0;
-// }
+int main(void)
+{
+    int n;
+    int *v;
+    printf("Introduceti numarul de elemente a vectorului: ");
+    scanf("%d", &n);
+    v = malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++)
+    {
+        printf("Introduceti a %d-lea element: ", i);
+        scanf("%d", &v[i]);
+    }
+
+    quicksort(v, 0, n - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("Vectorul sortat este: ");
+        printf("%d", v[i]);
+    }
+    return 0;
+}
