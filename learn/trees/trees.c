@@ -8,9 +8,8 @@ Node *create()
 {
     char c;
     int data;
-    Node *root = malloc(sizeof(Node));
+    Node *root = (Node *)malloc(sizeof(Node));
     printf("Dati cheia pentru nod: ");
-    fflush(stdin);
     scanf("%d", &data);
     root->data = data;
     printf("Nodul adaugat are subarbore stang? d/n \n");
@@ -25,6 +24,7 @@ Node *create()
         root->right = create();
     else
         root->right = NULL;
+
     return root;
 }
 
@@ -67,9 +67,11 @@ void freeTree(Node *root)
 Node *findLCA(Node *root, int a, int b)
 {
     if (root == NULL)
-        return NULL;
+        return;
+
     if (root->data == a || root->data == b)
         return root;
+
     Node *left = findLCA(root->left, a, b);
     Node *right = findLCA(root->right, a, b);
 
@@ -77,9 +79,13 @@ Node *findLCA(Node *root, int a, int b)
         return root;
     else
     {
-        if (left != 0)
+        if (left)
+        {
             return left;
+        }
         else
+        {
             return right;
+        }
     }
 }

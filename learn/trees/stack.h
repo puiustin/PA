@@ -1,7 +1,8 @@
 #ifndef stack_h
 #define stack_h
 
-#include "trees.h"
+typedef struct Node Node;
+
 typedef struct StackNode
 {
     Node *data;
