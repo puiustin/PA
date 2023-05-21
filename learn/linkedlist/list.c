@@ -116,5 +116,5 @@ double calculate_perimeter(Node *sentinel)
         while (current != sentinel)
         {
             double distance = sqrt
-
+        }
     // coxdawdawd
