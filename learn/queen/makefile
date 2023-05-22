@@ -1,4 +1,4 @@
 all:
-	gcc -o run -lm  *.c
+	gcc -o run -lm *.c
 clean:
 	rm -f run

@@ -26,7 +26,7 @@ int main()
     double elapsed = ((double)t) / CLOCKS_PER_SEC;
 
     afisare(tabla, n);
-    printf("\nTimp executie: %0.6f secunde", elapsed);
+    printf("\nTimp executie: %0.6f secunde\n", elapsed);
 
     for (int i = 0; i < n; i++)
         free(tabla[i]);
