@@ -32,20 +32,18 @@ int isSafe(int **tabla, int row, int col, int n)
     return 1;
 }
 
-int nRegine(int **tabla, int n, int col, int *aux)
+int nRegine(int **tabla, int n, int col)
 {
     if (col >= n)
         return 1;
-    *aux = 1;
     for (int i = 0; i < n; i++)
     {
         if (isSafe(tabla, i, col, n))
         {
             tabla[i][col] = 1;
-            if (nRegine(tabla, n, col + 1, aux))
+            if (nRegine(tabla, n, col + 1))
             {
                 return 1;
-                *aux++;
             }
             tabla[i][col] = 0;
         }
