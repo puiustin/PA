@@ -11,40 +11,44 @@ void afisare(int **tabla, int n)
             if (tabla[i][j] == 1)
                 printf(" W ");
             else
-                printf(" - ");
+                printf(" = ");
         }
         printf("\n");
     }
 }
 
-bool esteSigura(int **tabla, int row, int col, int n)
+int isSafe(int **tabla, int row, int col, int n)
 {
     int i, j;
     for (i = 0; i < col; i++)
         if (tabla[row][i])
-            return false;
+            return 0;
     for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
         if (tabla[i][j])
-            return false;
+            return 0;
     for (i = row, j = col; j >= 0 && i < n; i++, j--)
         if (tabla[i][j])
-            return false;
-    return true;
+            return 0;
+    return 1;
 }
 
-bool nRegine(int **tabla, int n, int col)
+int nRegine(int **tabla, int n, int col, int *aux)
 {
     if (col >= n)
-        return true;
+        return 1;
+    *aux = 1;
     for (int i = 0; i < n; i++)
     {
-        if (esteSigura(tabla, i, col, n))
+        if (isSafe(tabla, i, col, n))
         {
             tabla[i][col] = 1;
-            if (nRegine(tabla, n, col + 1))
-                return true;
+            if (nRegine(tabla, n, col + 1, aux))
+            {
+                return 1;
+                *aux++;
+            }
             tabla[i][col] = 0;
         }
     }
-    return false;
+    return 0;
 }
