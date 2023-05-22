@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "queen.h"
 
 void afisare(int **tabla, int n)

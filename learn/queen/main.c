@@ -3,7 +3,7 @@
 #include <time.h>
 #include "queen.h"
 
-#define N 10
+#define N 4
 
 int main()
 {
