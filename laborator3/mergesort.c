@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "mergesort.h"
+
 void merge(int array[], int left, int middle, int right)
 {
     int n1 = middle - left + 1;
@@ -53,25 +55,4 @@ void mergesort(int array[], int left, int right)
         mergesort(array, middle + 1, right);
         merge(array, left, middle, right);
     }
-}
-
-int main(void)
-{
-    int n;
-
-    printf("Introduceti numarul de elemente ale vectorului: ");
-    scanf("%d", &n);
-    int v[n];
-    for (int i = 0; i < n; i++)
-    {
-        printf("Introduceti al %d-lea element: ", i + 1);
-        scanf("%d", &v[i]);
-    }
-    mergesort(v, 0, n - 1);
-    printf("Elementele vectorului sunt: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", v[i]);
-    }
-    return 0;
 }
