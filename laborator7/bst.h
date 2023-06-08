@@ -17,8 +17,7 @@ struct TrieNode
 typedef struct TrieNode TrieNode;
 
 /* Alte funcţii pentru BST */
-Node *
-newNode(const char *word, const char *description);
+Node *newNode(const char *word, const char *description);
 Node *insert(Node *root, const char *word, const char *description);
 void printBST(Node *root);
 void freeBST(Node *root);
